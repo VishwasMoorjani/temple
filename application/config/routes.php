@@ -50,17 +50,57 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'home';
-$route['about'] = 'home/about';
-$route['services'] = 'home/services';
-$route['achievements'] = 'home/achievements';
-$route['blog/(:any)'] = 'home/blog/$1';
-$route['policy/(:any)'] = 'home/policy/$1';
-$route['gallery'] = 'home/gallery';
-$route['contact'] = 'home/contact';
-$route['blog'] = 'home/blogs';
-$route['thanks'] = 'home/thanks';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+// --- Static Pages ---
+$route['about-us'] = 'home/about';
+$route['contact-us'] = 'home/contact';
+$route['gallery'] = 'home/gallery';
+$route['privacy-policy'] = 'home/privacy_policy';
+
+// --- Member Authentication ---
+$route['login']     = 'memberauth/login';
+$route['register']  = 'memberauth/register';
+$route['logout']    = 'memberauth/logout';
+$route['my-profile'] = 'memberauth/dashboard';
+$route['my-applications'] = 'memberauth/my_applications';
+$route['donation-history'] = 'memberauth/donation_history';
+$route['request-update'] = 'memberauth/request_update';
+$route['edit-profile'] = 'memberauth/edit_profile';
+
+// --- Public Directory ---
+$route['members']             = 'listing/members';
+$route['members/(:num)']      = 'listing/members/$1';
+$route['member/(:num)']       = 'listing/member_profile/$1';
+$route['business']            = 'listing/business';
+$route['business/category/(:any)'] = 'listing/business_category/$1';
+$route['business/(:num)']     = 'listing/business_profile/$1';
+
+// --- Services (Donation & Assistance) ---
+$route['donate'] = 'services/donate';
+$route['medical-assistance']   = 'services/apply/medical';
+$route['education-assistance'] = 'services/apply/education';
+$route['pension-assistance']   = 'services/apply/pension';
+
+// --- Information Directories ---
+$route['information/maharaj']      = 'information/maharaj';
+$route['information/maharaj/(:num)'] = 'information/maharaj/$1';
+$route['information/temples']      = 'information/temples';
+$route['information/temples/(:num)'] = 'information/temples/$1';
+$route['information/dharmshalas']  = 'information/dharmshalas';
+$route['information/dharmshalas/(:num)'] = 'information/dharmshalas/$1';
+$route['information/jobs']         = 'information/jobs';
+$route['information/jobs/(:num)']  = 'information/jobs/$1';
+
+// --- Programs / Events ---
+$route['programs/upcoming'] = 'programs/upcoming';
+$route['programs/recent']   = 'programs/recent';
+$route['programs/(:any)']   = 'programs/detail/$1';
+
+// --- News ---
+$route['news']        = 'news/index';
+$route['news/(:any)'] = 'news/detail/$1';
+
+// --- Catch-all (MUST be last) ---
 $route['(:any)'] = 'home/service/$1';
-// $route['sitemap\.xml'] = 'home/sitemap';

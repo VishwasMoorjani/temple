@@ -42,6 +42,34 @@
                 <?php endif; ?>                            
 
                 <li class="nav-item mt-3">
+                    <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Community</h6>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="<?= base_url('admin/community/members'); ?>">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Members</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="<?= base_url('admin/community/categories'); ?>">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fas fa-list-alt"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Categories</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="<?= base_url('admin/community/posts'); ?>">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Posts</span>
+                    </a>
+                </li>
+
+                <li class="nav-item mt-3">
                     <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Settings</h6>
                 </li>
                 <li class="nav-item">

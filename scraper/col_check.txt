@@ -1,0 +1,25 @@
+Field	Type	Null	Key	Default	Extra
+id	int(11)	NO	PRI	NULL	auto_increment
+membership_no	varchar(50)	YES	UNI	NULL	
+first_name	varchar(100)	NO		NULL	
+last_name	varchar(100)	NO		NULL	
+email	varchar(150)	YES		NULL	
+phone	varchar(20)	NO		NULL	
+password	varchar(255)	NO		NULL	
+dob	date	YES		NULL	
+gotra	varchar(100)	YES		NULL	
+marital_status	enum('Single','Married','Widowed')	YES		Single	
+spouse_name	varchar(150)	YES		NULL	
+address	text	YES		NULL	
+city	varchar(100)	YES		NULL	
+pincode	varchar(10)	YES		NULL	
+profile_pic	varchar(255)	YES		NULL	
+status	tinyint(1)	YES		1	
+is_deleted	tinyint(1)	YES		0	
+deleted_at	datetime	YES		NULL	
+deleted_by	int(11)	YES		NULL	
+created_at	datetime	YES		current_timestamp()	
+updated_at	datetime	YES		current_timestamp()	on update current_timestamp()
+designation	varchar(100)	YES		NULL	
+membership_type	varchar(50)	YES		NULL	
+photo	varchar(255)	YES		NULL	

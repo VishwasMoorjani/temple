@@ -16,12 +16,25 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
+		// Load Community Model
+		$this->load->model('Community_model');
+
+		// Fetch Homepage Data
+		$this->Global['sliders']     = $this->Community_model->get_sliders();
+		$this->Global['upcoming']    = $this->Community_model->get_upcoming_events(3);
+		$this->Global['news']        = $this->Community_model->get_news(5);
+		$this->Global['home_intro']  = $this->Community_model->get_page('home-intro');
+		
+		// Stats
+		$this->Global['stats'] = $this->Community_model->get_stats();
+
 		$this->load->view('front/index', $this->Global);
 	}
 	
 	public function about()
 	{
-		$this->Global['page'] = $this->Global_model->getpage("about")[0];
+		$pages = $this->Global_model->getpage("about");
+		$this->Global['page'] = !empty($pages) ? $pages[0] : null;
 		$this->load->view('front/about', $this->Global);
 	}
 	public function achievements()
@@ -71,6 +84,11 @@ class Home extends CI_Controller {
 	public function contact()
 	{
 		$this->load->view('front/contact', $this->Global);
+	}
+
+	public function privacy_policy()
+	{
+		$this->load->view('front/privacy-policy', $this->Global);
 	}
 	public function thanks()
 	{
