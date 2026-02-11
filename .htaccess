@@ -1,0 +1,30 @@
+RewriteEngine On
+
+# Step 1: Fix multiple slashes (before anything else)
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/+(.+?)//+(.+?)\s [NC]
+RewriteRule ^ /%1/%2 [R=301,L]
+
+# Step 2: Force HTTPS and www (only once)
+# RewriteCond %{HTTPS} off [OR]
+# RewriteCond %{HTTP_HOST} !^www\. [NC]
+# RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# Step 3: Redirect /index.php to /
+RewriteRule ^index\.php$ / [R=301,L]
+
+# Step 4: Remove /index.php from URLs
+RewriteCond %{ENV:REDIRECT_STATUS} ^$
+RewriteRule ^index.php(?:/(.*))?$ /$1 [R=301,L]
+
+# Step 5: Route non-existing files/directories to index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
+
+# Step 6: Skip real files or directories
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Step 7: Remove trailing slash
+RewriteRule ^(.*)/$ /$1 [L,R=301]
