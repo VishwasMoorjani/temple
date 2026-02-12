@@ -49,7 +49,7 @@
         <div class="row align-items-center g-5">
             <div class="col-lg-6" data-aos="fade-right">
                 <div class="position-relative">
-                    <img src="https://images.unsplash.com/photo-1574163501302-39327581561b?auto=format&fit=crop&q=80&w=800" class="img-fluid rounded-5 shadow-lg" alt="Temple">
+                    <img src="<?=base_url('assets/front/images/temple.png')?>" class="img-fluid rounded-5 shadow-lg" alt="Temple">
                     <div class="position-absolute bottom-0 end-0 bg-primary p-4 rounded-4 shadow-lg m-4 d-none d-md-block" data-aos="zoom-in" data-aos-delay="200">
                         <h4 class="text-white mb-0">70+ Years</h4>
                         <p class="text-white-50 mb-0 small">Of Community Service</p>

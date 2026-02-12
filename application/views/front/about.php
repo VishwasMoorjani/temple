@@ -13,7 +13,8 @@
     </div>
     <!-- Decorative element -->
     <div class="position-absolute top-50 end-0 translate-middle-y opacity-10 pe-5 d-none d-lg-block">
-        <i class="fas fa-om fa-10x text-white"></i>
+        <!-- <i class="fas fa-om fa-10x text-white"></i> -->
+         <img src="<?= base_url('assets/front/images/logo.png') ?>" style="width: 100px;" alt="Logo" class="img-fluid"> 
     </div>
 </section>
 

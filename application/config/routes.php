@@ -58,6 +58,8 @@ $route['about-us'] = 'home/about';
 $route['contact-us'] = 'home/contact';
 $route['gallery'] = 'home/gallery';
 $route['privacy-policy'] = 'home/privacy_policy';
+$route['terms'] = 'home/policy/terms';
+$route['refund-policy'] = 'home/policy/refund-policy';
 
 // --- Member Authentication ---
 $route['login']     = 'memberauth/login';
@@ -101,6 +103,26 @@ $route['programs/(:any)']   = 'programs/detail/$1';
 // --- News ---
 $route['news']        = 'news/index';
 $route['news/(:any)'] = 'news/detail/$1';
+
+// --- Admin Panel ---
+// --- Admin Panel ---
+// Community Module Routes (Priority High)
+$route['admin/community'] = 'admin/community/dashboard';
+$route['admin/community/members'] = 'admin/community/members';
+$route['admin/community/add_member'] = 'admin/community/add_member';
+$route['admin/community/save_member'] = 'admin/community/save_member';
+$route['admin/community/edit_member/(:num)'] = 'admin/community/edit_member/$1';
+$route['admin/community/update_member/(:num)'] = 'admin/community/update_member/$1';
+$route['admin/community/delete_member/(:num)'] = 'admin/community/delete_member/$1';
+$route['admin/community/categories'] = 'admin/community/categories';
+$route['admin/community/posts'] = 'admin/community/posts';
+// Catch-all for community just in case
+$route['admin/community/(:any)'] = 'admin/community/$1';
+
+
+// Main Admin Dashboard
+// $route['admin'] = 'dashboard';
+// $route['admin/(:any)'] = 'dashboard/$1';
 
 // --- Catch-all (MUST be last) ---
 $route['(:any)'] = 'home/service/$1';

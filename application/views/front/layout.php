@@ -39,18 +39,22 @@
 
         .playfair { font-family: 'Playfair Display', serif; }
 
-        /* Glassmorphism Navbar */
-        .navbar {
-            background: var(--glass-bg);
+        /* Glassmorphism Header */
+        .main-header {
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
         }
 
-        .navbar.scrolled {
-            padding: 10px 0;
+        .main-header.scrolled {
             box-shadow: var(--premium-shadow);
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        .navbar {
+            padding: 0;
         }
 
         .nav-link {
@@ -204,50 +208,85 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="<?= base_url() ?>">
-                <i class="fas fa-om me-2"></i>RAJASTHAN JAIN SABHA
-            </a>
-            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="<?= base_url() ?>">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?= base_url('about-us') ?>">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?= base_url('members') ?>">Members</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?= base_url('business') ?>">Business</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown">Services</a>
-                        <ul class="dropdown-menu border-0 shadow-lg p-3 rounded-4">
-                            <li><a class="dropdown-item rounded-3" href="<?= base_url('donate') ?>">Donate</a></li>
-                            <li><a class="dropdown-item rounded-3" href="<?= base_url('medical-assistance') ?>">Medical Assistance</a></li>
-                            <li><a class="dropdown-item rounded-3" href="<?= base_url('education-assistance') ?>">Education Fund</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="infoDropdown" role="button" data-bs-toggle="dropdown">Information</a>
-                        <ul class="dropdown-menu border-0 shadow-lg p-3 rounded-4">
-                            <li><a class="dropdown-item rounded-3" href="<?= base_url('information/temples') ?>">Temples</a></li>
-                            <li><a class="dropdown-item rounded-3" href="<?= base_url('information/maharaj') ?>">Maharaj & Mataji</a></li>
-                            <li><a class="dropdown-item rounded-3" href="<?= base_url('information/dharmshalas') ?>">Dharmshalas</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="<?= base_url('contact-us') ?>">Contact</a></li>
-                </ul>
-                <div class="ms-lg-3 d-flex flex-wrap gap-2">
-                    <?php if($this->session->userdata('isMemberLoggedIn')): ?>
-                        <a href="<?= base_url('my-profile') ?>" class="btn btn-outline-primary">My Profile</a>
-                        <a href="<?= base_url('logout') ?>" class="btn btn-danger rounded-pill px-4">Logout</a>
-                    <?php else: ?>
-                        <a href="<?= base_url('login') ?>" class="btn btn-outline-primary">Login</a>
-                        <a href="<?= base_url('register') ?>" class="btn btn-primary">Join Community</a>
-                    <?php endif; ?>
+    <!-- Header -->
+    <header class="sticky-top main-header">
+        <!-- Top Bar -->
+        <div class="header-top py-2 d-none d-lg-block border-bottom border-light">
+            <div class="container">
+                <div class="d-flex align-items-center justify-content-between">
+                    <a class="navbar-brand m-0" href="<?= base_url() ?>">
+                        <!-- <i class="fas fa-om me-2"></i>RAJASTHAN JAIN SABHA -->
+                        <img src="<?= base_url('assets/front/images/logo.png') ?>" style="width: 100px;" alt="Logo" class="img-fluid"> &nbsp; Rajasthan Jain Sabha
+                    </a>
+                    
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="d-flex gap-2">
+                             <?php if($this->session->userdata('isMemberLoggedIn')): ?>
+                                <a href="<?= base_url('my-profile') ?>" class="btn btn-sm btn-outline-primary rounded-pill px-3">
+                                    <i class="fas fa-user-circle me-1"></i> My Profile
+                                </a>
+                                <a href="<?= base_url('logout') ?>" class="btn btn-sm btn-danger rounded-pill px-3">Logout</a>
+                            <?php else: ?>
+                                <a href="<?= base_url('login') ?>" class="btn btn-sm btn-outline-primary rounded-pill px-3">Login</a>
+                                <a href="<?= base_url('register') ?>" class="btn btn-sm btn-primary rounded-pill px-3 text-white">Join Community</a>
+                            <?php endif; ?>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </nav>
+
+        <!-- Bottom Bar (Navigation) -->
+        <div class="header-bottom">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container">
+                    <a class="navbar-brand d-lg-none" href="<?= base_url() ?>">
+                        <img src="<?= base_url('assets/front/images/logo.png') ?>" style="width: 100px;" alt="Logo" class="img-fluid"> &nbsp;Rajasthan Jain Sabha
+                    </a>
+
+                    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link" href="<?= base_url() ?>">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="<?= base_url('about-us') ?>">About Us</a></li>
+                            <li class="nav-item"><a class="nav-link" href="<?= base_url('members') ?>">Members</a></li>
+                            <li class="nav-item"><a class="nav-link" href="<?= base_url('business') ?>">Business</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown">Services</a>
+                                <ul class="dropdown-menu border-0 shadow-lg p-3 rounded-4">
+                                    <li><a class="dropdown-item rounded-3" href="<?= base_url('donate') ?>">Donate</a></li>
+                                    <li><a class="dropdown-item rounded-3" href="<?= base_url('medical-assistance') ?>">Medical Assistance</a></li>
+                                    <li><a class="dropdown-item rounded-3" href="<?= base_url('education-assistance') ?>">Education Fund</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="infoDropdown" role="button" data-bs-toggle="dropdown">Information</a>
+                                <ul class="dropdown-menu border-0 shadow-lg p-3 rounded-4">
+                                    <li><a class="dropdown-item rounded-3" href="<?= base_url('information/temples') ?>">Temples</a></li>
+                                    <li><a class="dropdown-item rounded-3" href="<?= base_url('information/maharaj') ?>">Maharaj & Mataji</a></li>
+                                    <li><a class="dropdown-item rounded-3" href="<?= base_url('information/dharmshalas') ?>">Dharmshalas</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="<?= base_url('contact-us') ?>">Contact</a></li>
+                        </ul>
+                        
+                        <div class="d-lg-none mt-3 pb-3 border-top pt-3">
+                             <?php if($this->session->userdata('isMemberLoggedIn')): ?>
+                                <a href="<?= base_url('my-profile') ?>" class="btn btn-outline-primary w-100 mb-2">My Profile</a>
+                                <a href="<?= base_url('logout') ?>" class="btn btn-danger w-100">Logout</a>
+                            <?php else: ?>
+                                <a href="<?= base_url('login') ?>" class="btn btn-outline-primary w-100 mb-2">Login</a>
+                                <a href="<?= base_url('register') ?>" class="btn btn-primary w-100">Join Community</a>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
 
     <!-- Main Content -->
     <main>
@@ -323,9 +362,9 @@
         // Navbar Scroll Effect
         $(window).scroll(function() {
             if ($(this).scrollTop() > 50) {
-                $('.navbar').addClass('scrolled');
+                $('.main-header').addClass('scrolled');
             } else {
-                $('.navbar').removeClass('scrolled');
+                $('.main-header').removeClass('scrolled');
             }
         });
     </script>

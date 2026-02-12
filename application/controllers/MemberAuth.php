@@ -30,7 +30,7 @@ class MemberAuth extends CI_Controller
             $member = $this->db->get_where('com_members', ['email' => $email, 'is_deleted' => 0])->row();
 
             if ($member) {
-                if (password_verify($password, $member->password)) {
+                if ($password === $member->password) {
                     if ($member->status == 1) {
                         $session_data = [
                             'member_id' => $member->id,
