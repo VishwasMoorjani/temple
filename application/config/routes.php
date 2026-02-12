@@ -106,23 +106,18 @@ $route['news/(:any)'] = 'news/detail/$1';
 
 // --- Admin Panel ---
 // --- Admin Panel ---
-// Community Module Routes (Priority High)
-$route['admin/community'] = 'admin/community/dashboard';
-$route['admin/community/members'] = 'admin/community/members';
-$route['admin/community/add_member'] = 'admin/community/add_member';
-$route['admin/community/save_member'] = 'admin/community/save_member';
-$route['admin/community/edit_member/(:num)'] = 'admin/community/edit_member/$1';
-$route['admin/community/update_member/(:num)'] = 'admin/community/update_member/$1';
-$route['admin/community/delete_member/(:num)'] = 'admin/community/delete_member/$1';
-$route['admin/community/categories'] = 'admin/community/categories';
-$route['admin/community/posts'] = 'admin/community/posts';
-// Catch-all for community just in case
-$route['admin/community/(:any)'] = 'admin/community/$1';
-
+// --- Admin Panel ---
+// Moved Community Controller to root controllers folder for simplicity
+$route['admin/community'] = 'community/dashboard';
+$route['admin/community/members'] = 'community/members';
+$route['admin/community/categories'] = 'community/categories';
+$route['admin/community/posts'] = 'community/posts';
+$route['admin/community/(:any)'] = 'community/$1';
+$route['admin/community/(:any)/(:any)'] = 'community/$1/$2';
 
 // Main Admin Dashboard
-// $route['admin'] = 'dashboard';
-// $route['admin/(:any)'] = 'dashboard/$1';
+$route['admin'] = 'dashboard';
+$route['admin/(:any)'] = 'dashboard/$1';
 
 // --- Catch-all (MUST be last) ---
 $route['(:any)'] = 'home/service/$1';

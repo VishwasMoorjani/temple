@@ -1,3 +1,4 @@
+<?php $this->load->view('admin/head'); ?>
 <?php $this->load->view('admin/header'); ?>
 
 <div class="main-content">
